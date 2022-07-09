@@ -9,15 +9,8 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Condition.visible;
-import static com.codeborne.selenide.Selenide.sleep;
 
 public class AppTest extends SetUp {
-
-    MainPage mainPage = new MainPage();
-    SearchPage searchPage = new SearchPage();
-    Faker faker = new Faker();
-    public String message = faker.book().title();
-    public String pokemon = faker.pokemon().name();
 
     @DataProvider(name = "dp")
     public Object[][] dpMethod() {
@@ -36,19 +29,18 @@ public class AppTest extends SetUp {
 
     @Test(dataProvider = "dp", testName = "Search tests with DP")
     public void method2(String dpMethod) {
-        mainPage.
-                searchField.setValue(dpMethod)
-                .pressEnter();
+        mainPage
+                .typeSomeTextIntoSearchInputAndPressEnter(dpMethod);
 
         searchPage.searchResult
                 .should(Condition.text(dpMethod));
+
         searchPage
                 .scrollToUkraineInTheBottom()
-                .ukraine.should(visible);
-        searchPage
+                .checkIfUkraineLocationIsVisible()
                 .logo.click();
+
         mainPage
                 .mainPageLocator.should(visible);
-
     }
 }

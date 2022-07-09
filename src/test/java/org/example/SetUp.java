@@ -1,24 +1,29 @@
 package org.example;
 
-import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.SelenideConfig;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import com.github.javafaker.Faker;
+import org.example.pages.MainPage;
+import org.example.pages.SearchPage;
+import org.testng.annotations.*;
 
-import static com.codeborne.selenide.Selenide.*;
-import static com.codeborne.selenide.WebDriverRunner.closeWebDriver;
+import static com.codeborne.selenide.Selenide.closeWebDriver;
+import static com.codeborne.selenide.Selenide.open;
 
 public class SetUp {
 
+    public MainPage mainPage = new MainPage();
+    public SearchPage searchPage = new SearchPage();
+    public Faker faker = new Faker();
+    public String message = faker.book().title();
+    public String pokemon = faker.pokemon().name();
 
-    @BeforeTest
+    @BeforeMethod
     public void openUrl() {
         open("https://google.com");
     }
 
-    @AfterTest
+    @AfterMethod
     public void quit() {
-        Selenide.closeWebDriver();
+        closeWebDriver();
     }
 }
