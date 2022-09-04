@@ -11,6 +11,7 @@ public class MainPage {
     public SelenideElement mainPageLocator = $x("//img[@alt='Google']");
     public SelenideElement mail = $x("//a[contains(text(),'Почта')]");
     public SelenideElement searchField = $x("//input[@title='Поиск']");
+    public SelenideElement logInBtn = $x("//a[text()='Войти']");
 
     @Step
     public MainPage checkIfMailBtnIsVisible() {
@@ -24,4 +25,9 @@ public class MainPage {
         return this;
     }
 
+    @Step
+    public LoginPage clickOnLogInBtn(){
+        logInBtn.should(Condition.visible).click();
+        return new LoginPage();
+    }
 }

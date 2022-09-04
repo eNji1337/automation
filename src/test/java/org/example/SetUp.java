@@ -1,13 +1,12 @@
 package org.example;
 
-import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.Configuration;
 import com.github.javafaker.Faker;
 import org.example.pages.MainPage;
 import org.example.pages.SearchPage;
 import org.testng.annotations.*;
 
-import static com.codeborne.selenide.Selenide.closeWebDriver;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class SetUp {
 
@@ -19,6 +18,7 @@ public class SetUp {
 
     @BeforeMethod
     public void openUrl() {
+        Configuration.browserSize="1920x1080";
         open("https://google.com");
     }
 

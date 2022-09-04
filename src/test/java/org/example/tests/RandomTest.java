@@ -1,16 +1,13 @@
 package org.example.tests;
 
 import com.codeborne.selenide.Condition;
-import com.github.javafaker.Faker;
 import org.example.SetUp;
-import org.example.pages.MainPage;
-import org.example.pages.SearchPage;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Condition.visible;
 
-public class AppTest extends SetUp {
+public class RandomTest extends SetUp {
 
     @DataProvider(name = "dp")
     public Object[][] dpMethod() {

@@ -1,8 +1,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name = "Parallel Testing Suite">
-    <test name = "Parallel Tests" parallel = "methods" thread-count = "10">
+<suite name = "TESTNG">
+    <test name = "TESTNG" parallel = "methods" thread-count = "2">
         <classes>
-            <class name = "org.example.tests.AppTest" />
+            <class name = "org.example.tests.RandomTest" />
+            <class name = "org.example.tests.CreateGoogleAccountTest" />
         </classes>
     </test>
 </suite>
